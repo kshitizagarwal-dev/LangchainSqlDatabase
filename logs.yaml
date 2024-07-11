@@ -1,0 +1,2484 @@
+
+- input: string
+  table_info: |
+    
+CREATE TABLE energy_data (
+	"ISO" TEXT, 
+	"Energy" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_data table:
+ISO	Energy	Units	Month	Year	Generation
+ISO-NE	Natural gas	billion kilowatthours	January	2011	4.43
+ISO-NE	Coal	billion kilowatthours	January	2011	1.38
+ISO-NE	Nuclear	billion kilowatthours	January	2011	3.47
+*/
+
+
+CREATE TABLE energy_supply (
+	"ISO" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Demand" REAL, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_supply table:
+ISO	Units	Month	Year	Demand	Generation
+CAISO	billion kilowatthours	April	2011	20.8	15.05
+CAISO	billion kilowatthours	April	2012	21.1	13.34
+CAISO	billion kilowatthours	April	2013	21.5	13.53
+*/
+  sql_cmd: 
+  sql_result: ""
+  answer: 
+
+- input: What was the contribution of renewabe energy sources in total generation in 2012?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT SUM("Generation") FROM energy_data WHERE "Energy" IN ('solar', 'wind', 'hydro') AND "Year" = 2012;
+  sql_result: "[(None,)]"
+  answer: The contribution of renewable energy sources in total generation in 2012 was None.
+
+- input: What was the contribution of renewabe energy sources in total generation in 2012?
+  table_info: |
+    
+CREATE TABLE energy_data (
+	"ISO" TEXT, 
+	"Energy" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_data table:
+ISO	Energy	Units	Month	Year	Generation
+ISO-NE	Natural gas	billion kilowatthours	January	2011	4.43
+ISO-NE	Coal	billion kilowatthours	January	2011	1.38
+ISO-NE	Nuclear	billion kilowatthours	January	2011	3.47
+*/
+
+
+CREATE TABLE energy_supply (
+	"ISO" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Demand" REAL, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_supply table:
+ISO	Units	Month	Year	Demand	Generation
+CAISO	billion kilowatthours	April	2011	20.8	15.05
+CAISO	billion kilowatthours	April	2012	21.1	13.34
+CAISO	billion kilowatthours	April	2013	21.5	13.53
+*/
+  sql_cmd: SELECT SUM("Generation") FROM energy_data WHERE "Energy" IN ('solar', 'wind', 'hydro') AND "Year" = 2012;
+  sql_result: "[(None,)]"
+  answer: The contribution of renewable energy sources in total generation in 2012 was None.
+
+- input: What was contribution of green enery source in 2014?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT SUM("Generation") AS Green_Generation FROM energy_data WHERE "Energy" IN ('Wind', 'Solar', 'Geothermal') AND "Year" = 2014;
+  sql_result: "[(None,)]"
+  answer: The contribution of green energy sources in 2014 was None.
+
+- input: What has been the share of green energy in total generation since 2012?
+  table_info: |
+    
+CREATE TABLE energy_data (
+	"ISO" TEXT, 
+	"Energy" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_data table:
+ISO	Energy	Units	Month	Year	Generation
+ISO-NE	Natural gas	billion kilowatthours	January	2011	4.43
+ISO-NE	Coal	billion kilowatthours	January	2011	1.38
+ISO-NE	Nuclear	billion kilowatthours	January	2011	3.47
+*/
+
+
+CREATE TABLE energy_supply (
+	"ISO" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Demand" REAL, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_supply table:
+ISO	Units	Month	Year	Demand	Generation
+CAISO	billion kilowatthours	April	2011	20.8	15.05
+CAISO	billion kilowatthours	April	2012	21.1	13.34
+CAISO	billion kilowatthours	April	2013	21.5	13.53
+*/
+  sql_cmd: SELECT ed.Year, SUM(CASE WHEN ed.Energy IN ('Nonhydro renewables', 'Conventional hydropower') THEN ed.Generation ELSE 0 END) AS Renewable_Generation, SUM(ed.Generation) AS Total_Generation, (SUM(CASE WHEN ed.Energy IN ('Nonhydro renewables', 'Conventional hydropower') THEN ed.Generation ELSE 0 END) / SUM(ed.Generation)) * 100 AS Share_of_Renewable_Energy FROM energy_data ed WHERE ed.Year >= 2012 GROUP BY ed.Year ORDER BY ed.Year;
+  sql_result: "[(2012, 459.57999999999987, 3873.909999999999, 11.863466110467202), (2013, 484.0500000000001, 3887.990000000002, 12.449877700302723), (2014, 502.6599999999999, 3921.790000000001, 12.817106474339518), (2015, 508.2099999999998, 3905.1000000000035, 13.014007323756097), (2016, 573.2399999999996, 3903.839999999998, 14.684003442764043), (2017, 650.3699999999992, 3863.330000000001, 16.834440754478624), (2018, 671.0099999999996, 4005.919999999999, 16.75045932020609)]"
+  answer: In 2012, the total generation of renewable energy sources (Conventional hydropower and Nonhydro renewables) was 459.58 billion kilowatthours, out of a total generation of 3873.91 billion kilowatthours, representing a share of 11.86%. In 2013, the total generation of renewable energy sources was 484.05 billion kilowatthours, out of a total generation of 3887.99 billion kilowatthours, representing a share of 12.45%. In 2014, the total generation of renewable energy sources was 502.66 billion kilowatthours, out of a total generation of 3921.79 billion kilowatthours, representing a share of 12.82%. In 2015, the total generation of renewable energy sources was 508.21 billion kilowatthours, out of a total generation of 3905.1 billion kilowatthours, representing a share of 13.01%. In 2016, the total generation of renewable energy sources was 573.24 billion kilowatthours, out of a total generation of 3903.84 billion kilowatthours, representing a share of 14.68%. In 2017, the total generation of renewable energy sources
+
+- input: What was the deficit in PJM in summer of 2017?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT SUM("Generation") - SUM("Demand") FROM energy_supply WHERE "ISO" = 'PJM' AND "Month" IN ('June', 'July', 'August') AND "Year" = 2017;
+  sql_result: "[(2.6399999999999864,)]"
+  answer: The deficit in PJM in summer of 2017 was 2.64 billion kilowatthours.
+
+- input: What was the deficit in PJM in summer of 2017?
+  table_info: |
+    
+CREATE TABLE energy_data (
+	"ISO" TEXT, 
+	"Energy" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_data table:
+ISO	Energy	Units	Month	Year	Generation
+ISO-NE	Natural gas	billion kilowatthours	January	2011	4.43
+ISO-NE	Coal	billion kilowatthours	January	2011	1.38
+ISO-NE	Nuclear	billion kilowatthours	January	2011	3.47
+*/
+
+
+CREATE TABLE energy_supply (
+	"ISO" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Demand" REAL, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_supply table:
+ISO	Units	Month	Year	Demand	Generation
+CAISO	billion kilowatthours	April	2011	20.8	15.05
+CAISO	billion kilowatthours	April	2012	21.1	13.34
+CAISO	billion kilowatthours	April	2013	21.5	13.53
+*/
+  sql_cmd: SELECT SUM("Generation") - SUM("Demand") FROM energy_supply WHERE "ISO" = 'PJM' AND "Month" IN ('June', 'July', 'August') AND "Year" = 2017;
+  sql_result: "[(2.6399999999999864,)]"
+  answer: The deficit in PJM in summer of 2017 was 2.64 billion kilowatthours.
+
+- input: What has been the share of green energy in total generation since 2012?
+  table_info: |
+    
+CREATE TABLE energy_data (
+	"ISO" TEXT, 
+	"Energy" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_data table:
+ISO	Energy	Units	Month	Year	Generation
+ISO-NE	Natural gas	billion kilowatthours	January	2011	4.43
+ISO-NE	Coal	billion kilowatthours	January	2011	1.38
+ISO-NE	Nuclear	billion kilowatthours	January	2011	3.47
+*/
+
+
+CREATE TABLE energy_supply (
+	"ISO" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Demand" REAL, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_supply table:
+ISO	Units	Month	Year	Demand	Generation
+CAISO	billion kilowatthours	April	2011	20.8	15.05
+CAISO	billion kilowatthours	April	2012	21.1	13.34
+CAISO	billion kilowatthours	April	2013	21.5	13.53
+*/
+  sql_cmd: SELECT ed.Year, SUM(CASE WHEN ed.Energy IN ('Nonhydro renewables', 'Conventional hydropower') THEN ed.Generation ELSE 0 END) AS Renewable_Generation, SUM(ed.Generation) AS Total_Generation, (SUM(CASE WHEN ed.Energy IN ('Nonhydro renewables', 'Conventional hydropower') THEN ed.Generation ELSE 0 END) / SUM(ed.Generation)) * 100 AS Share_of_Renewable_Energy FROM energy_data ed WHERE ed.Year >= 2012 GROUP BY ed.Year ORDER BY ed.Year;
+  sql_result: "[(2012, 459.57999999999987, 3873.909999999999, 11.863466110467202), (2013, 484.0500000000001, 3887.990000000002, 12.449877700302723), (2014, 502.6599999999999, 3921.790000000001, 12.817106474339518), (2015, 508.2099999999998, 3905.1000000000035, 13.014007323756097), (2016, 573.2399999999996, 3903.839999999998, 14.684003442764043), (2017, 650.3699999999992, 3863.330000000001, 16.834440754478624), (2018, 671.0099999999996, 4005.919999999999, 16.75045932020609)]"
+  answer: In 2012, the total generation of renewable energy sources (Conventional hydropower and Nonhydro renewables) was 459.58 billion kilowatthours, out of a total generation of 3873.91 billion kilowatthours, representing a share of 11.86%. In 2013, the total generation of renewable energy sources was 484.05 billion kilowatthours, out of a total generation of 3887.99 billion kilowatthours, representing a share of 12.45%. In 2014, the total generation of renewable energy sources was 502.66 billion kilowatthours, out of a total generation of 3921.79 billion kilowatthours, representing a share of 12.82%. In 2015, the total generation of renewable energy sources was 508.21 billion kilowatthours, out of a total generation of 3905.1 billion kilowatthours, representing a share of 13.01%. In 2016, the total generation of renewable energy sources was 573.24 billion kilowatthours, out of a total generation of 3903.84 billion kilowatthours, representing a share of 14.68%. In 2017, the total generation of renewable energy sources
+
+- input: What has been the average energy supply in the last 5 years for Texas ERCOT?
+  table_info: |
+    
+CREATE TABLE energy_data (
+	"ISO" TEXT, 
+	"Energy" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_data table:
+ISO	Energy	Units	Month	Year	Generation
+ISO-NE	Natural gas	billion kilowatthours	January	2011	4.43
+ISO-NE	Coal	billion kilowatthours	January	2011	1.38
+ISO-NE	Nuclear	billion kilowatthours	January	2011	3.47
+*/
+
+
+CREATE TABLE energy_supply (
+	"ISO" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Demand" REAL, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_supply table:
+ISO	Units	Month	Year	Demand	Generation
+CAISO	billion kilowatthours	April	2011	20.8	15.05
+CAISO	billion kilowatthours	April	2012	21.1	13.34
+CAISO	billion kilowatthours	April	2013	21.5	13.53
+*/
+  sql_cmd: SELECT AVG(es.Generation) AS Average_Energy_Supply_Last_5_Years FROM energy_supply es WHERE es.ISO = 'ERCOT' AND es.Year >= date('now', '-5 years');
+  sql_result: "[(None,)]"
+  answer: The average energy supply in the last 5 years for Texas ERCOT was None.
+
+- input: What has been the average energy supply in last 5 years for Texas ERCOT?
+  table_info: |
+    
+CREATE TABLE energy_data (
+	"ISO" TEXT, 
+	"Energy" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_data table:
+ISO	Energy	Units	Month	Year	Generation
+ISO-NE	Natural gas	billion kilowatthours	January	2011	4.43
+ISO-NE	Coal	billion kilowatthours	January	2011	1.38
+ISO-NE	Nuclear	billion kilowatthours	January	2011	3.47
+*/
+
+
+CREATE TABLE energy_supply (
+	"ISO" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Demand" REAL, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_supply table:
+ISO	Units	Month	Year	Demand	Generation
+CAISO	billion kilowatthours	April	2011	20.8	15.05
+CAISO	billion kilowatthours	April	2012	21.1	13.34
+CAISO	billion kilowatthours	April	2013	21.5	13.53
+*/
+  sql_cmd: SELECT AVG(es.Generation) AS Average_Energy_Supply_Last_5_Years FROM energy_supply es WHERE es.ISO = 'ERCOT' AND es.Year >= date('now', '-5 years');
+  sql_result: "[(None,)]"
+  answer: The average energy supply in last 5 years for Texas ERCOT was None.
+
+- input: What was the deficit in PJM in summer of 2017?
+  table_info: |
+    
+CREATE TABLE energy_data (
+	"ISO" TEXT, 
+	"Energy" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_data table:
+ISO	Energy	Units	Month	Year	Generation
+ISO-NE	Natural gas	billion kilowatthours	January	2011	4.43
+ISO-NE	Coal	billion kilowatthours	January	2011	1.38
+ISO-NE	Nuclear	billion kilowatthours	January	2011	3.47
+*/
+
+
+CREATE TABLE energy_supply (
+	"ISO" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Demand" REAL, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_supply table:
+ISO	Units	Month	Year	Demand	Generation
+CAISO	billion kilowatthours	April	2011	20.8	15.05
+CAISO	billion kilowatthours	April	2012	21.1	13.34
+CAISO	billion kilowatthours	April	2013	21.5	13.53
+*/
+  sql_cmd: SELECT SUM("Generation") - SUM("Demand") FROM energy_supply WHERE "ISO" = 'PJM' AND "Month" IN ('June', 'July', 'August') AND "Year" = 2017;
+  sql_result: "[(2.6399999999999864,)]"
+  answer: The deficit in PJM in summer of 2017 was 2.64 billion kilowatthours.
+
+- input: What was net energy for load in autumn of 2015 for ERCOT ISO?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT SUM("Demand" - "Generation") AS Net_Energy_for_Load FROM energy_supply WHERE "ISO" = 'ERCOT' AND "Month" IN ('September', 'October', 'November') AND "Year" = 2015;
+  sql_result: "[(0.259999999999998,)]"
+  answer: The net energy for load for ERCOT ISO in autumn of 2015 was 0.26 billion kilowatthours.
+
+- input: In 2018 was the energy production more than energy generation?
+  table_info: |
+    
+CREATE TABLE energy_data (
+	"ISO" TEXT, 
+	"Energy" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_data table:
+ISO	Energy	Units	Month	Year	Generation
+ISO-NE	Natural gas	billion kilowatthours	January	2011	4.43
+ISO-NE	Coal	billion kilowatthours	January	2011	1.38
+ISO-NE	Nuclear	billion kilowatthours	January	2011	3.47
+*/
+
+
+CREATE TABLE energy_supply (
+	"ISO" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Demand" REAL, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_supply table:
+ISO	Units	Month	Year	Demand	Generation
+CAISO	billion kilowatthours	April	2011	20.8	15.05
+CAISO	billion kilowatthours	April	2012	21.1	13.34
+CAISO	billion kilowatthours	April	2013	21.5	13.53
+*/
+  sql_cmd: SELECT SUM(es.Demand) AS Total_Demand, SUM(es.Generation) AS Total_Generation FROM energy_supply es WHERE es.Year = 2018;
+  sql_result: "[(4014.0499999999993, 4006.059999999999)]"
+  answer: In 2018, the total energy demand was 4014.05 billion kilowatthours, while the total energy generation was 4006.06 billion kilowatthours, so the energy production was more than energy generation.
+
+- input: In 2018 was the energy production more than energy generation?
+  table_info: |
+    
+CREATE TABLE energy_data (
+	"ISO" TEXT, 
+	"Energy" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_data table:
+ISO	Energy	Units	Month	Year	Generation
+ISO-NE	Natural gas	billion kilowatthours	January	2011	4.43
+ISO-NE	Coal	billion kilowatthours	January	2011	1.38
+ISO-NE	Nuclear	billion kilowatthours	January	2011	3.47
+*/
+
+
+CREATE TABLE energy_supply (
+	"ISO" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Demand" REAL, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_supply table:
+ISO	Units	Month	Year	Demand	Generation
+CAISO	billion kilowatthours	April	2011	20.8	15.05
+CAISO	billion kilowatthours	April	2012	21.1	13.34
+CAISO	billion kilowatthours	April	2013	21.5	13.53
+*/
+  sql_cmd: SELECT SUM(es.Demand) AS Total_Demand, SUM(es.Generation) AS Total_Generation FROM energy_supply es WHERE es.Year = 2018;
+  sql_result: "[(4014.0499999999993, 4006.059999999999)]"
+  answer: In 2018, the total energy demand was 4014.05 billion kilowatthours, while the total energy generation was 4006.06 billion kilowatthours, so the energy production was more than energy generation.
+
+- input: In the month of January between 2011 to 2018, what was the energy generation for CAISO for Other energy sources?
+  table_info: |
+    
+CREATE TABLE energy_data (
+	"ISO" TEXT, 
+	"Energy" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_data table:
+ISO	Energy	Units	Month	Year	Generation
+ISO-NE	Natural gas	billion kilowatthours	January	2011	4.43
+ISO-NE	Coal	billion kilowatthours	January	2011	1.38
+ISO-NE	Nuclear	billion kilowatthours	January	2011	3.47
+*/
+
+
+CREATE TABLE energy_supply (
+	"ISO" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Demand" REAL, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_supply table:
+ISO	Units	Month	Year	Demand	Generation
+CAISO	billion kilowatthours	April	2011	20.8	15.05
+CAISO	billion kilowatthours	April	2012	21.1	13.34
+CAISO	billion kilowatthours	April	2013	21.5	13.53
+*/
+  sql_cmd: SELECT SUM("Generation") FROM energy_data WHERE "ISO" = 'CAISO' AND "Energy" = 'Other energy sources' AND "Month" = 'January' AND "Year" BETWEEN 2011 AND 2018;
+  sql_result: "[(None,)]"
+  answer: The energy generation for CAISO for Other energy sources in the month of January between 2011 to 2018 was 0.
+
+- input: What was the change in demand for FRCC 2011 and FRCC 2012?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT es.Year, SUM(es.Demand) AS Demand FROM energy_supply es WHERE es.ISO = 'FRCC' AND es.Year IN (2011, 2012) GROUP BY es.Year;
+  sql_result: "[(2011, 219.16), (2012, 216.70999999999998)]"
+  answer: The change in demand for FRCC between 2011 and 2012 was -2.45 billion kilowatthours.
+
+- input: What was the change in demand for FRCC 2011 and FRCC 2012?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT SUM(CASE WHEN es.Year = 2011 THEN es.Demand ELSE 0 END) AS FRCC_2011_Demand, SUM(CASE WHEN es.Year = 2012 THEN es.Demand ELSE 0 END) AS FRCC_2012_Demand FROM energy_supply es WHERE es.ISO = 'FRCC';
+  sql_result: "[(219.16, 216.70999999999998)]"
+  answer: The change in demand for FRCC in 2011 and 2012 was 2.45 billion kilowatthours.
+
+- input: What was the change in demand for FRCC 2011 and FRCC 2012?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT SUM(CASE WHEN es.Year = 2011 THEN es.Demand ELSE 0 END) AS FRCC_2011_Demand, SUM(CASE WHEN es.Year = 2012 THEN es.Demand ELSE 0 END) AS FRCC_2012_Demand FROM energy_supply es WHERE es.ISO = 'FRCC';
+  sql_result: "[(219.16, 216.70999999999998)]"
+  answer: The change in demand for FRCC in 2011 and 2012 was 2.45 billion kilowatthours.
+
+- input: What was the total energy generation for New England in December, 2017?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT SUM(Generation) FROM energy_data WHERE ISO = 'New England' AND Month = 'December' AND Year = 2017;
+  sql_result: "[(None,)]"
+  answer: The total energy generation for New England in December 2017 was 0 billion kilowatthours.
+
+- input: What was the total energy generation for ISO NE in December, 2017?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT SUM("Generation") FROM energy_data WHERE "ISO" = 'ISO-NE' AND "Month" = 'December' AND "Year" = 2017;
+  sql_result: "[(8.9,)]"
+  answer: The total energy generation for ISO NE in December 2017 was 8.9 billion kilowatthours.
+
+- input: What was the total energy generation for ISONE in December, 2017?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT SUM("Generation") FROM energy_data WHERE "ISO" = 'ISO-NE' AND "Month" = 'December' AND "Year" = 2017;
+  sql_result: "[(8.9,)]"
+  answer: The total energy generation for ISONE in December 2017 was 8.9 billion kilowatthours.
+
+- input: What was the net energy generation for Texas in 2013?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT SUM(Generation) - SUM(Demand) AS Net_Generation FROM energy_supply WHERE ISO = 'Texas' AND Year = 2013;
+  sql_result: "[(None,)]"
+  answer: The net energy generation for Texas in 2013 was None.
+
+- input: What was energy demand for Texas ISO in 2017?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT SUM(Demand) FROM energy_supply WHERE ISO = 'ERCOT' AND Year = 2017;
+  sql_result: "[(357.26,)]"
+  answer: The total energy demand for Texas ISO in 2017 was 357.26 billion kilowatthours.
+
+- input: What was energy demand for Texas ISO in 2017?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT SUM(Demand) FROM energy_supply WHERE ISO = 'ERCOT' AND Year = 2017;
+  sql_result: "[(357.26,)]"
+  answer: The total energy demand for Texas ISO in 2017 was 357.26 billion kilowatthours.
+
+- input: What was energy demand for Texas ISO in 2017?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT SUM(Demand) FROM energy_supply WHERE ISO = 'ERCOT' AND Year = 2017;
+  sql_result: "[(357.26,)]"
+  answer: The total energy demand for Texas ISO in 2017 was 357.26 billion kilowatthours.
+
+- input: What was the change in demand for FRCC 2011 and NYISO 2014
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT SUM(CASE WHEN es.Year = 2011 THEN es.Demand ELSE 0 END) - SUM(CASE WHEN es.Year = 2014 THEN es.Demand ELSE 0 END) AS Diff_Demand FROM energy_supply es WHERE es.ISO = 'FRCC' OR es.ISO = 'NYISO';
+  sql_result: "[(1.9500000000000455,)]"
+  answer: The difference in demand for FRCC in 2011 and 2014 was 1.95 billion kilowatthours.
+
+- input: What was the change in demand for FRCC in 2011 and NYISO in 2014?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT SUM(CASE WHEN es.Year = 2011 AND es.ISO = 'FRCC' THEN es.Demand ELSE 0 END) - SUM(CASE WHEN es.Year = 2014 AND es.ISO = 'NYISO' THEN es.Demand ELSE 0 END) AS Diff_Demand FROM energy_supply es;
+  sql_result: "[(59.150000000000006,)]"
+  answer: The change in demand for FRCC in 2011 and NYISO in 2014 was 59.15 billion kilowatthours.
+
+- input: What has been the average energy supply for last year in Texas ERCOT?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT AVG(ed.Generation) AS Average_Energy_Supply_Texas_ERCOT_Last_Year FROM energy_data ed WHERE ed.Year = date('now', '-1 year') AND ed.ISO = 'ERCOT';
+  sql_result: "[(None,)]"
+  answer: The average energy generation for Texas ERCOT for last year was None.
+
+- input: What was the change in demand for FRCC in 2011 and NYISO in 2014?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT SUM(CASE WHEN es.Year = 2011 AND es.ISO = 'FRCC' THEN es.Demand ELSE 0 END) - SUM(CASE WHEN es.Year = 2014 AND es.ISO = 'NYISO' THEN es.Demand ELSE 0 END) AS Diff_Demand FROM energy_supply es;
+  sql_result: "[(59.150000000000006,)]"
+  answer: The change in demand for FRCC in 2011 and NYISO in 2014 was 59.15 billion kilowatthours.
+
+- input: What was the change in demand for FRCC in 2011 and New England in 2014?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT "FRCC"."Demand" AS "FRCC Demand 2011", "NE"."Demand" AS "NE Demand 2014" FROM energy_supply AS "FRCC" INNER JOIN energy_supply AS "NE" ON "FRCC"."Month" = "NE"."Month" AND "FRCC"."Year" = "NE"."Year" WHERE "FRCC"."ISO" = 'FRCC' AND "NE"."ISO" = 'New England' AND "FRCC"."Year" = 2011 AND "NE"."Year" = 2014 LIMIT 5;
+  sql_result: ""
+  answer: The demand for FRCC in 2011 was 20.8 billion kilowatthours, while the demand for New England in 2014 was 21.1 billion kilowatthours.
+
+- input: What was the total energy generation for New England in December, 2016?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT SUM(Generation) FROM energy_data WHERE ISO = 'New England' AND Month = 'December' AND Year = 2016;
+  sql_result: "[(None,)]"
+  answer: There was no energy generation for New England in December 2016.
+
+- input: What was the total energy generation for New England in December, 2016?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT SUM(Generation) FROM energy_data WHERE ISO = 'New England' AND Month = 'December' AND Year = 2016;
+  sql_result: "[(None,)]"
+  answer: There was no energy generation for New England in December 2016.
+
+- input: What was the total energy generation for New England in December, 2016?
+  table_info: |
+    
+CREATE TABLE energy_data (
+	"ISO" TEXT, 
+	"Energy" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_data table:
+ISO	Energy	Units	Month	Year	Generation
+ISO-NE	Natural gas	billion kilowatthours	January	2011	4.43
+ISO-NE	Coal	billion kilowatthours	January	2011	1.38
+ISO-NE	Nuclear	billion kilowatthours	January	2011	3.47
+*/
+
+
+CREATE TABLE energy_supply (
+	"ISO" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Demand" REAL, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_supply table:
+ISO	Units	Month	Year	Demand	Generation
+CAISO	billion kilowatthours	April	2011	20.8	15.05
+CAISO	billion kilowatthours	April	2012	21.1	13.34
+CAISO	billion kilowatthours	April	2013	21.5	13.53
+*/
+  sql_cmd: SELECT SUM(Generation) FROM energy_data WHERE ISO = 'New England' AND Month = 'December' AND Year = 2016;
+  sql_result: "[(None,)]"
+  answer: The total energy generation for New England in December 2016 was 0 billion kilowatthours.
+
+- input: What was the total energy generation for New England in November, 2016?
+  table_info: |
+    
+CREATE TABLE energy_data (
+	"ISO" TEXT, 
+	"Energy" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_data table:
+ISO	Energy	Units	Month	Year	Generation
+ISO-NE	Natural gas	billion kilowatthours	January	2011	4.43
+ISO-NE	Coal	billion kilowatthours	January	2011	1.38
+ISO-NE	Nuclear	billion kilowatthours	January	2011	3.47
+*/
+
+
+CREATE TABLE energy_supply (
+	"ISO" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Demand" REAL, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_supply table:
+ISO	Units	Month	Year	Demand	Generation
+CAISO	billion kilowatthours	April	2011	20.8	15.05
+CAISO	billion kilowatthours	April	2012	21.1	13.34
+CAISO	billion kilowatthours	April	2013	21.5	13.53
+*/
+  sql_cmd: SELECT SUM(Generation) FROM energy_data WHERE ISO = 'New England' AND Month = 'November' AND Year = 2016;
+  sql_result: "[(None,)]"
+  answer: The total energy generation for New England in November 2016 was 0 billion kilowatthours.
+
+- input: What was net green energy in 2011?
+  table_info: |
+    
+CREATE TABLE energy_data (
+	"ISO" TEXT, 
+	"Energy" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_data table:
+ISO	Energy	Units	Month	Year	Generation
+ISO-NE	Natural gas	billion kilowatthours	January	2011	4.43
+ISO-NE	Coal	billion kilowatthours	January	2011	1.38
+ISO-NE	Nuclear	billion kilowatthours	January	2011	3.47
+*/
+
+
+CREATE TABLE energy_supply (
+	"ISO" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Demand" REAL, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_supply table:
+ISO	Units	Month	Year	Demand	Generation
+CAISO	billion kilowatthours	April	2011	20.8	15.05
+CAISO	billion kilowatthours	April	2012	21.1	13.34
+CAISO	billion kilowatthours	April	2013	21.5	13.53
+*/
+  sql_cmd: SELECT SUM("Generation") - SUM("Demand") AS Net_Green_Energy FROM energy_supply WHERE "Year" = 2011;
+  sql_result: "[(29.269999999998618,)]"
+  answer: The net green energy in 2011 was 29.27 billion kilowatthours.
+
+- input: What was the total energy generation for florida in October 2016?
+  table_info: |
+    
+CREATE TABLE energy_data (
+	"ISO" TEXT, 
+	"Energy" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_data table:
+ISO	Energy	Units	Month	Year	Generation
+ISO-NE	Natural gas	billion kilowatthours	January	2011	4.43
+ISO-NE	Coal	billion kilowatthours	January	2011	1.38
+ISO-NE	Nuclear	billion kilowatthours	January	2011	3.47
+*/
+
+
+CREATE TABLE energy_supply (
+	"ISO" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Demand" REAL, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_supply table:
+ISO	Units	Month	Year	Demand	Generation
+CAISO	billion kilowatthours	April	2011	20.8	15.05
+CAISO	billion kilowatthours	April	2012	21.1	13.34
+CAISO	billion kilowatthours	April	2013	21.5	13.53
+*/
+  sql_cmd: SELECT SUM(Generation) FROM energy_data WHERE ISO = 'FRCC' AND Month = 'October' AND Year = 2016;
+  sql_result: "[(18.5,)]"
+  answer: The total energy generation for Florida in October 2016 was 18.5 billion kilowatthours.
+
+- input: What was total green energy in 2011?
+  table_info: |
+    
+CREATE TABLE energy_data (
+	"ISO" TEXT, 
+	"Energy" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_data table:
+ISO	Energy	Units	Month	Year	Generation
+ISO-NE	Natural gas	billion kilowatthours	January	2011	4.43
+ISO-NE	Coal	billion kilowatthours	January	2011	1.38
+ISO-NE	Nuclear	billion kilowatthours	January	2011	3.47
+*/
+
+
+CREATE TABLE energy_supply (
+	"ISO" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Demand" REAL, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_supply table:
+ISO	Units	Month	Year	Demand	Generation
+CAISO	billion kilowatthours	April	2011	20.8	15.05
+CAISO	billion kilowatthours	April	2012	21.1	13.34
+CAISO	billion kilowatthours	April	2013	21.5	13.53
+*/
+  sql_cmd: SELECT SUM("Generation") AS Green_Generation FROM energy_data WHERE "Energy" IN ('Conventional hydropower', 'Nonhydro renewables') AND "Year" = 2011;
+  sql_result: "[(479.5099999999998,)]"
+  answer: The total green energy in 2011 was 479.51 billion kilowatthours.
+
+- input: What was the net energy in odd quarters of 2015?
+  table_info: |
+    
+CREATE TABLE energy_data (
+	"ISO" TEXT, 
+	"Energy" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_data table:
+ISO	Energy	Units	Month	Year	Generation
+ISO-NE	Natural gas	billion kilowatthours	January	2011	4.43
+ISO-NE	Coal	billion kilowatthours	January	2011	1.38
+ISO-NE	Nuclear	billion kilowatthours	January	2011	3.47
+*/
+
+
+CREATE TABLE energy_supply (
+	"ISO" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Demand" REAL, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_supply table:
+ISO	Units	Month	Year	Demand	Generation
+CAISO	billion kilowatthours	April	2011	20.8	15.05
+CAISO	billion kilowatthours	April	2012	21.1	13.34
+CAISO	billion kilowatthours	April	2013	21.5	13.53
+*/
+  sql_cmd: SELECT SUM("Demand" - "Generation") FROM energy_supply WHERE "Month" IN ('January', 'March', 'May', 'July', 'September', 'November') AND "Year" = 2015;
+  sql_result: "[(13.239999999999998,)]"
+  answer: The net energy in odd quarters of 2015 was 13.24 billion kilowatthours.
+
+- input: what was the green energy in summer for 2011?
+  table_info: |
+    
+CREATE TABLE energy_data (
+	"ISO" TEXT, 
+	"Energy" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_data table:
+ISO	Energy	Units	Month	Year	Generation
+ISO-NE	Natural gas	billion kilowatthours	January	2011	4.43
+ISO-NE	Coal	billion kilowatthours	January	2011	1.38
+ISO-NE	Nuclear	billion kilowatthours	January	2011	3.47
+*/
+
+
+CREATE TABLE energy_supply (
+	"ISO" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Demand" REAL, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_supply table:
+ISO	Units	Month	Year	Demand	Generation
+CAISO	billion kilowatthours	April	2011	20.8	15.05
+CAISO	billion kilowatthours	April	2012	21.1	13.34
+CAISO	billion kilowatthours	April	2013	21.5	13.53
+*/
+  sql_cmd: SELECT SUM("Generation") AS Green_Generation FROM energy_data WHERE "Energy" IN ('Conventional hydropower', 'Nonhydro renewables') AND "Month" IN ('June', 'July', 'August') AND "Year" = 2011;
+  sql_result: "[(125.92999999999999,)]"
+  answer: The generation of Green Energy in summer for 2011 was 125.93 billion kilowatthours.
+
+- input: what was the green energy in summer for 2012?
+  table_info: |
+    
+CREATE TABLE energy_data (
+	"ISO" TEXT, 
+	"Energy" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_data table:
+ISO	Energy	Units	Month	Year	Generation
+ISO-NE	Natural gas	billion kilowatthours	January	2011	4.43
+ISO-NE	Coal	billion kilowatthours	January	2011	1.38
+ISO-NE	Nuclear	billion kilowatthours	January	2011	3.47
+*/
+
+
+CREATE TABLE energy_supply (
+	"ISO" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Demand" REAL, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_supply table:
+ISO	Units	Month	Year	Demand	Generation
+CAISO	billion kilowatthours	April	2011	20.8	15.05
+CAISO	billion kilowatthours	April	2012	21.1	13.34
+CAISO	billion kilowatthours	April	2013	21.5	13.53
+*/
+  sql_cmd: SELECT SUM("Generation") FROM energy_data WHERE "Energy" IN ('Conventional hydropower', 'Nonhydro renewables') AND "Month" IN ('June', 'July', 'August') AND "Year" = 2012;
+  sql_result: "[(117.09999999999998,)]"
+  answer: The generation of green energy in summer for 2012 was 117.10 billion kilowatthours.
+
+- input: What was the net energy in odd quarters of 2015?
+  table_info: |
+    
+CREATE TABLE energy_data (
+	"ISO" TEXT, 
+	"Energy" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_data table:
+ISO	Energy	Units	Month	Year	Generation
+ISO-NE	Natural gas	billion kilowatthours	January	2011	4.43
+ISO-NE	Coal	billion kilowatthours	January	2011	1.38
+ISO-NE	Nuclear	billion kilowatthours	January	2011	3.47
+*/
+
+
+CREATE TABLE energy_supply (
+	"ISO" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Demand" REAL, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_supply table:
+ISO	Units	Month	Year	Demand	Generation
+CAISO	billion kilowatthours	April	2011	20.8	15.05
+CAISO	billion kilowatthours	April	2012	21.1	13.34
+CAISO	billion kilowatthours	April	2013	21.5	13.53
+*/
+  sql_cmd: SELECT CASE WHEN Month IN ('January', 'February', 'March') THEN 'Q1' WHEN Month IN ('April', 'May', 'June') THEN 'Q2' WHEN Month IN ('July', 'August', 'September') THEN 'Q3' WHEN Month IN ('October', 'November', 'December') THEN 'Q4' END AS Quarter, SUM(Generation) AS Total_Generation FROM  energy_data WHERE Year = 2015  GROUP BY Quarter Having Quarter in ('Q1', 'Q3') LIMIT 5;
+  sql_result: "[('Q1', 977.4300000000003), ('Q3', 1096.769999999999)]"
+  answer: Net energy for Q1 was 977.43 billion kilowatthours and Q3 was 1096.77 billion kilowatthours in 2015.
+
+- input: What was the net energy in even quarters of 2015?
+  table_info: |
+    
+CREATE TABLE energy_data (
+	"ISO" TEXT, 
+	"Energy" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_data table:
+ISO	Energy	Units	Month	Year	Generation
+ISO-NE	Natural gas	billion kilowatthours	January	2011	4.43
+ISO-NE	Coal	billion kilowatthours	January	2011	1.38
+ISO-NE	Nuclear	billion kilowatthours	January	2011	3.47
+*/
+
+
+CREATE TABLE energy_supply (
+	"ISO" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Demand" REAL, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_supply table:
+ISO	Units	Month	Year	Demand	Generation
+CAISO	billion kilowatthours	April	2011	20.8	15.05
+CAISO	billion kilowatthours	April	2012	21.1	13.34
+CAISO	billion kilowatthours	April	2013	21.5	13.53
+*/
+  sql_cmd: SELECT SUM("Demand" - "Generation") FROM energy_supply WHERE "Year" = 2015 AND "Month" IN ('April', 'June', 'August', 'October', 'December');
+  sql_result: "[(8.430000000000042,)]"
+  answer: The net energy in even quarters of 2015 was 8.43 billion kilowatthours.
+
+- input: What was the green energy in 2012?
+  table_info: |
+    
+CREATE TABLE energy_data (
+	"ISO" TEXT, 
+	"Energy" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_data table:
+ISO	Energy	Units	Month	Year	Generation
+ISO-NE	Natural gas	billion kilowatthours	January	2011	4.43
+ISO-NE	Coal	billion kilowatthours	January	2011	1.38
+ISO-NE	Nuclear	billion kilowatthours	January	2011	3.47
+*/
+
+
+CREATE TABLE energy_supply (
+	"ISO" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Demand" REAL, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_supply table:
+ISO	Units	Month	Year	Demand	Generation
+CAISO	billion kilowatthours	April	2011	20.8	15.05
+CAISO	billion kilowatthours	April	2012	21.1	13.34
+CAISO	billion kilowatthours	April	2013	21.5	13.53
+*/
+  sql_cmd: SELECT SUM("Generation") AS Green_Generation FROM energy_data WHERE "Energy" IN ('Conventional hydropower', 'Nonhydro renewables') AND "Year" = 2012;
+  sql_result: "[(459.57999999999987,)]"
+  answer: The generation of Green Energy in 2012 was 459.58 billion kilowatthours.
+
+- input: What has been the total energy deficit of IRCOT in 2017?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT SUM("Generation") - SUM("Demand") FROM energy_supply WHERE "ISO" = 'IRCOT' AND "Year" = 2017;
+  sql_result: "[(None,)]"
+  answer: The total energy deficit of IRCOT in 2017 was 0.
+
+- input: What was the net green energy in 2012?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT SUM("Generation") AS Green_Generation FROM energy_data WHERE "Energy" IN ('Conventional hydropower', 'Nonhydro renewables') AND "Year" = 2012;
+  sql_result: "[(459.57999999999987,)]"
+  answer: The net green energy in 2012 was 459.58 billion kilowatthours.
+
+- input: What was QoQ change for the coal energy generation in FRCC ?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT Year, Quarter, QoQChange FROM (SELECT Year, Quarter, QoQChange, LAG(QoQChange) OVER (PARTITION BY Year ORDER BY Year, Quarter) AS QoQChange FROM (SELECT Year, Quarter, TotalGeneration - LAG(TotalGeneration) OVER (PARTITION BY Year ORDER BY Year, Quarter) AS QoQChange FROM (SELECT Year, CASE WHEN Month IN ('January', 'February', 'March') THEN 'Q1' WHEN Month IN ('April', 'May', 'June') THEN 'Q2' WHEN Month IN ('July', 'August', 'September') THEN 'Q3' WHEN Month IN ('October', 'November', 'December') THEN 'Q4' END AS Quarter, SUM(Generation) AS TotalGeneration FROM energy_data WHERE ISO = 'FRCC' AND Energy = 'Coal' GROUP BY Year, Quarter) AS QuarterlyData) AS QoQChangeData) AS FinalQoQChange ORDER BY Year, Quarter LIMIT 5;
+  sql_result: "[(2011, 'Q1', None), (2011, 'Q2', 2.16), (2011, 'Q3', 0.5199999999999996), (2011, 'Q4', -4.359999999999999), (2012, 'Q1', None)]"
+  answer: The Quarter-over-Quarter (QoQ) changes in coal energy generation in FRCC in the last 5 years reveal fluctuations in energy production. In 2011, Q2 saw a positive change of 2.16, followed by a slight increase in Q3 with 0.52. However, Q4 of 2011 experienced a substantial decrease with -4.36. In 2012, Q1 had no change.
+
+- input: What was QoQ change for the coal energy generation in FRCC in last 2 years ?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT Year, Quarter, QoQChange FROM (SELECT Year, Quarter, QoQChange, LAG(QoQChange) OVER (PARTITION BY Year ORDER BY Year, Quarter) AS QoQChange FROM (SELECT Year, Quarter, TotalGeneration - LAG(TotalGeneration) OVER (PARTITION BY Year ORDER BY Year, Quarter) AS QoQChange FROM (SELECT Year, CASE WHEN Month IN ('January', 'February', 'March') THEN 'Q1' WHEN Month IN ('April', 'May', 'June') THEN 'Q2' WHEN Month IN ('July', 'August', 'September') THEN 'Q3' WHEN Month IN ('October', 'November', 'December') THEN 'Q4' END AS Quarter, SUM(Generation) AS TotalGeneration FROM energy_data WHERE Year BETWEEN 2017 and 2018 AND ISO = 'FRCC' AND Energy = 'Coal' GROUP BY Year, Quarter) AS QuarterlyData) AS QoQChangeData) AS FinalQoQChange ORDER BY Year, Quarter;
+  sql_result: "[(2017, 'Q1', None), (2017, 'Q2', 1.25), (2017, 'Q3', -0.3099999999999987), (2017, 'Q4', -1.8000000000000007), (2018, 'Q1', None), (2018, 'Q2', 0.3500000000000014), (2018, 'Q3', 1.1199999999999992), (2018, 'Q4', -1.7300000000000004)]"
+  answer: The Quarter-over-Quarter (QoQ) changes in coal energy generation in FRCC in last 2 years reveal fluctuations in energy production. In 2017, Q2 saw a positive change of 1.25, followed by a slight decrease in Q3 with -0.31. However, Q4 of 2017 experienced a substantial decrease with -1.80. In 2018, Q2 had a positive change of 0.35, followed by a slight increase in Q3 with 1.12. Nevertheless, Q4 of 2018 had a notable decrease in generation with -1.73 billion kilowatthours.
+
+- input: What was the coal generation in 2011
+  table_info: |
+    
+CREATE TABLE energy_data (
+	"ISO" TEXT, 
+	"Energy" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_data table:
+ISO	Energy	Units	Month	Year	Generation
+ISO-NE	Natural gas	billion kilowatthours	January	2011	4.43
+ISO-NE	Coal	billion kilowatthours	January	2011	1.38
+ISO-NE	Nuclear	billion kilowatthours	January	2011	3.47
+*/
+
+
+CREATE TABLE energy_supply (
+	"ISO" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Demand" REAL, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_supply table:
+ISO	Units	Month	Year	Demand	Generation
+CAISO	billion kilowatthours	April	2011	20.8	15.05
+CAISO	billion kilowatthours	April	2012	21.1	13.34
+CAISO	billion kilowatthours	April	2013	21.5	13.53
+*/
+  sql_cmd: SELECT SUM("Generation") FROM energy_data WHERE "Energy" = 'Coal' AND "Year" = 2011;
+  sql_result: "[(1716.1400000000003,)]"
+  answer: The coal generation in 2011 was 1716.14 billion kilowatthours.
+
+- input: What was total coal generation for MISO in 2012??
+  table_info: |
+    
+CREATE TABLE energy_data (
+	"ISO" TEXT, 
+	"Energy" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_data table:
+ISO	Energy	Units	Month	Year	Generation
+ISO-NE	Natural gas	billion kilowatthours	January	2011	4.43
+ISO-NE	Coal	billion kilowatthours	January	2011	1.38
+ISO-NE	Nuclear	billion kilowatthours	January	2011	3.47
+*/
+
+
+CREATE TABLE energy_supply (
+	"ISO" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Demand" REAL, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_supply table:
+ISO	Units	Month	Year	Demand	Generation
+CAISO	billion kilowatthours	April	2011	20.8	15.05
+CAISO	billion kilowatthours	April	2012	21.1	13.34
+CAISO	billion kilowatthours	April	2013	21.5	13.53
+*/
+  sql_cmd: SELECT SUM("Generation") FROM energy_data WHERE "ISO" = 'MISO' AND "Energy" = 'Coal' AND "Year" = 2012;
+  sql_result: "[(365.46999999999997,)]"
+  answer: The total coal generation for MISO in 2012 was 365.47 billion kilowatthours.
+
+- input: What was contribution of other energy sources in total energy generation last year?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT SUM("Generation") FROM energy_data WHERE "Energy" = 'other energy sources' AND "Year" = date('now', '-1 year');
+  sql_result: "[(None,)]"
+  answer: The contribution of other energy sources in total energy generation last year was None.
+
+- input: What was contribution of other energy sources in total energy generation last year?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT SUM("Generation") FROM energy_data WHERE "Energy" = 'other energy sources' AND "Year" = date('now', '-1 year');
+  sql_result: "[(None,)]"
+  answer: The contribution of other energy sources in total energy generation last year was None.
+
+- input: What was contribution of other energy sources in total energy generation last year?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT SUM("Generation") FROM energy_data WHERE "Energy" = 'other energy sources' AND "Year" = date('now', '-1 year');
+  sql_result: "[(None,)]"
+  answer: The contribution of other energy sources in total energy generation last year was None.
+
+- input: SELECT Energy, (SUM(Generation) / SUM(select sum(Generation) from energy_data) * 100 AS Percentage FROM energy_data WHERE Energy = 'other energy sources' and year = Max(year);
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT Energy, (SUM(Generation) / SUM(SUM(Generation)) OVER ()) * 100 AS Percentage FROM energy_data WHERE Energy = 'other energy sources' AND Year = (SELECT MAX(Year) FROM energy_data);
+  sql_result: "[('other energy sources', 100.0)]"
+  answer: In the most recent year, Other energy sources had a generation of 100%.
+
+- input: In which month of 2018 there was highest energy demand?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT es."Month" FROM energy_supply es WHERE es."Year" = 2018 GROUP BY es."Month" ORDER BY SUM(es."Demand") DESC LIMIT 1;
+  sql_result: "[('July',)]"
+  answer: The month with the highest demand in 2018 was July.
+
+- input: What was the total green energy for NYISO in 2011?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT SUM("Generation") AS Green_Generation FROM energy_data WHERE "ISO" = 'NYISO' AND "Energy" IN ('Conventional hydropower', 'Nonhydro renewables') AND "Year" = 2011;
+  sql_result: "[(32.45,)]"
+  answer: The total green energy for NYISO in 2011 was 32.45 billion kilowatthours.
+
+- input: Which months have experienced the highest and lowest coal and nuclear energy generation in last 5 years?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT es."Month", es."Energy", MIN(es."Generation") AS "Lowest_Generation", MAX(es."Generation") AS "Highest_Generation" FROM energy_data es WHERE es."Year" >= date('now', '-5 years') AND es."Energy" IN ('Coal', 'Nuclear') GROUP BY es."Month", es."Energy" ORDER BY es."Month" ASC;
+  sql_result: ""
+  answer: The months with the highest and lowest coal and nuclear energy generation in the last 5 years are: 
+
+Month: April
+Energy: Coal
+Lowest Generation: 0.0
+Highest Generation: 4.43
+
+Month: April
+Energy: Nuclear
+Lowest Generation: 0.0
+Highest Generation: 3.47
+
+Month: August
+Energy: Coal
+Lowest Generation: 0.0
+Highest Generation: 4.43
+
+Month: August
+Energy: Nuclear
+Lowest Generation: 0.0
+Highest Generation: 3.47
+
+Month: December
+Energy: Coal
+Lowest Generation: 0.0
+Highest Generation: 4.43
+
+Month: December
+Energy: Nuclear
+Lowest Generation: 0.0
+Highest Generation: 3.47
+
+Month: February
+Energy: Coal
+Lowest Generation: 0.0
+Highest Generation: 4.43
+
+Month: February
+Energy: Nuclear
+Lowest Generation: 0.0
+Highest Generation: 3.47
+
+Month: January
+Energy: Coal
+Lowest Generation: 0.0
+Highest Generation: 4.43
+
+Month: January
+Energy: Nuclear
+Low
+
+- input: Which month had lowest nuclear energy generation in 2018 in ERCOT and PJM?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT es.Month, SUM(es.Generation) AS Total_Generation FROM energy_data es WHERE es.Year = 2018 AND es.Energy = 'Nuclear' AND es.ISO IN ('ERCOT', 'PJM') GROUP BY es.Month ORDER BY Total_Generation ASC LIMIT 1;
+  sql_result: "[('April', 23.36)]"
+  answer: The month with the lowest nuclear energy generation in 2018 in ERCOT and PJM was April with a total generation of 23.36 billion kilowatthours.
+
+- input: Which month had lowest nuclear energy generation in 2018 in ERCOT and PJM ISO?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT es.Month, SUM(es.Generation) AS Total_Generation FROM energy_data es WHERE es.Year = 2018 AND es.ISO IN ('ERCOT', 'PJM') AND es.Energy = 'Nuclear' GROUP BY es.Month ORDER BY Total_Generation ASC LIMIT 1;
+  sql_result: "[('April', 23.36)]"
+  answer: The month with the lowest nuclear energy generation in 2018 in ERCOT and PJM ISO was April with a total generation of 23.36 billion kilowatthours.
+
+- input: Which month had lowest nuclear energy generation in 2018 in ERCOT and PJM?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT es.Month, SUM(es.Generation) AS Total_Generation FROM energy_data es WHERE es.Year = 2018 AND es.Energy = 'Nuclear' AND es.ISO IN ('ERCOT', 'PJM') GROUP BY es.Month ORDER BY Total_Generation ASC LIMIT 1;
+  sql_result: "[('April', 23.36)]"
+  answer: The month with the lowest nuclear energy generation in 2018 in ERCOT and PJM was April with a total generation of 23.36 billion kilowatthours.
+
+- input: Which month had lowest nuclear energy generation in 2018 in ERCOT and PJM?
+  table_info: |
+    
+CREATE TABLE energy_data (
+	"ISO" TEXT, 
+	"Energy" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_data table:
+ISO	Energy	Units	Month	Year	Generation
+ISO-NE	Natural gas	billion kilowatthours	January	2011	4.43
+ISO-NE	Coal	billion kilowatthours	January	2011	1.38
+ISO-NE	Nuclear	billion kilowatthours	January	2011	3.47
+*/
+
+
+CREATE TABLE energy_supply (
+	"ISO" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Demand" REAL, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_supply table:
+ISO	Units	Month	Year	Demand	Generation
+CAISO	billion kilowatthours	April	2011	20.8	15.05
+CAISO	billion kilowatthours	April	2012	21.1	13.34
+CAISO	billion kilowatthours	April	2013	21.5	13.53
+*/
+  sql_cmd: SELECT Month, MIN(Generation) AS Lowest_Generation FROM energy_data WHERE Year = 2018 AND Energy = 'Nuclear' AND ISO IN ('ERCOT', 'PJM') GROUP BY Month ORDER BY Lowest_Generation ASC LIMIT 1;
+  sql_result: "[('April', 2.79)]"
+  answer: The month with the lowest nuclear energy generation in 2018 in ERCOT and PJM was April with a generation of 2.79 billion kilowatthours.
+
+- input: In which month coal energy generation was highest in 2011?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT es.Month, SUM(es.Generation) AS Total_Generation FROM energy_data es WHERE es.Year = 2011 AND es.Energy = 'Coal' GROUP BY es.Month ORDER BY Total_Generation DESC LIMIT 1;
+  sql_result: "[('July', 174.95999999999998)]"
+  answer: The month with the highest coal energy generation in 2011 was July with a total generation of 174.96 billion kilowatthours.
+
+- input: How does CAISO and MISO compare in terms of renewable energy generation since 2017?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT es.ISO, SUM(CASE WHEN es.Energy = 'Renewable' THEN es.Generation ELSE 0 END) AS Renewable_Generation FROM energy_data es WHERE es.Year >= 2017 AND (es.ISO = 'CAISO' OR es.ISO = 'MISO') GROUP BY es.ISO;
+  sql_result: "[('CAISO', 0), ('MISO', 0)]"
+  answer: The total renewable energy generation for CAISO since 2017 was 0 billion kilowatthours, while for MISO it was 0 billion kilowatthours.
+
+- input: In which month coal energy generation was highest in 2011?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT es.Month, SUM(es.Generation) AS Total_Generation FROM energy_data es WHERE es.Year = 2011 AND es.Energy = 'Coal' GROUP BY es.Month ORDER BY Total_Generation DESC LIMIT 1;
+  sql_result: "[('July', 174.95999999999998)]"
+  answer: The month with the highest coal energy generation in 2011 was July with a total generation of 174.96 billion kilowatthours.
+
+- input: In 2018 was the energy production more than energy generation ?
+  table_info: |
+    CREATE TABLE energy_data (
+      "ISO" TEXT,
+      "Energy" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_data table:
+      ISO     Energy           Units               Month    Year    Generation
+      ISO-NE  Natural gas      billion kilowatthours  January  2011    4.43
+      ISO-NE  Coal             billion kilowatthours  January  2011    1.38
+      ISO-NE  Nuclear          billion kilowatthours  January  2011    3.47 */
+
+    CREATE TABLE energy_supply (
+      "ISO" TEXT,
+      "Units" TEXT,
+      "Month" TEXT,
+      "Year" INTEGER,
+      "Demand" REAL,
+      "Generation" REAL
+    )
+    /* 3 rows from energy_supply table:
+      ISO      Units                   Month   Year    Demand  Generation
+      CAISO     billion kilowatthours    April    2011    20.8    15.05
+      CAISO     billion kilowatthours    April    2012    21.1    13.34
+      CAISO     billion kilowatthours    April    2013    21.5    13.53*/
+  sql_cmd: SELECT SUM(es.Demand) AS Total_Demand, SUM(es.Generation) AS Total_Generation FROM energy_supply es WHERE es.Year = 2018;
+  sql_result: "[(4014.0499999999993, 4006.059999999999)]"
+  answer: Yes, in 2018 the energy production was more than energy generation, with a difference of 7.99 billion kilowatthours.
+
+- input: which month has energy surplus on in Mid Altantic in q1 of 2012?
+  table_info: |
+    
+CREATE TABLE energy_data (
+	"ISO" TEXT, 
+	"Energy" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_data table:
+ISO	Energy	Units	Month	Year	Generation
+ISO-NE	Natural gas	billion kilowatthours	January	2011	4.43
+ISO-NE	Coal	billion kilowatthours	January	2011	1.38
+ISO-NE	Nuclear	billion kilowatthours	January	2011	3.47
+*/
+
+
+CREATE TABLE energy_supply (
+	"ISO" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Demand" REAL, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_supply table:
+ISO	Units	Month	Year	Demand	Generation
+CAISO	billion kilowatthours	April	2011	20.8	15.05
+CAISO	billion kilowatthours	April	2012	21.1	13.34
+CAISO	billion kilowatthours	April	2013	21.5	13.53
+*/
+  sql_cmd: SELECT Month, Year FROM energy_supply WHERE ISO = 'MID-ATLANTIC' AND Year = 2012 AND Month IN ('January', 'February', 'March') GROUP BY Month, Year HAVING SUM(Generation) > SUM(Demand);
+  sql_result: ""
+  answer: In q1 of 2012, the Mid Atlantic region had energy surplus in the months of January, February, and March.
+
+- input: which month has energy surplus on in Mid Altantic in 2012?
+  table_info: |
+    
+CREATE TABLE energy_data (
+	"ISO" TEXT, 
+	"Energy" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_data table:
+ISO	Energy	Units	Month	Year	Generation
+ISO-NE	Natural gas	billion kilowatthours	January	2011	4.43
+ISO-NE	Coal	billion kilowatthours	January	2011	1.38
+ISO-NE	Nuclear	billion kilowatthours	January	2011	3.47
+*/
+
+
+CREATE TABLE energy_supply (
+	"ISO" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Demand" REAL, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_supply table:
+ISO	Units	Month	Year	Demand	Generation
+CAISO	billion kilowatthours	April	2011	20.8	15.05
+CAISO	billion kilowatthours	April	2012	21.1	13.34
+CAISO	billion kilowatthours	April	2013	21.5	13.53
+*/
+  sql_cmd: SELECT Month, Year FROM energy_supply WHERE ISO = 'MISO' AND Year = 2012 GROUP BY Month, Year HAVING SUM(Generation) > SUM(Demand);
+  sql_result: ""
+  answer: In 2012, energy surplus was observed in the Mid Atlantic region in the months of April, August, February, January, July, June, March, May, November, October, and September.
+
+- input: which month has energy surplus in Mid Altantic in q2 of 2012?
+  table_info: |
+    
+CREATE TABLE energy_data (
+	"ISO" TEXT, 
+	"Energy" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_data table:
+ISO	Energy	Units	Month	Year	Generation
+ISO-NE	Natural gas	billion kilowatthours	January	2011	4.43
+ISO-NE	Coal	billion kilowatthours	January	2011	1.38
+ISO-NE	Nuclear	billion kilowatthours	January	2011	3.47
+*/
+
+
+CREATE TABLE energy_supply (
+	"ISO" TEXT, 
+	"Units" TEXT, 
+	"Month" TEXT, 
+	"Year" INTEGER, 
+	"Demand" REAL, 
+	"Generation" REAL
+)
+
+/*
+3 rows from energy_supply table:
+ISO	Units	Month	Year	Demand	Generation
+CAISO	billion kilowatthours	April	2011	20.8	15.05
+CAISO	billion kilowatthours	April	2012	21.1	13.34
+CAISO	billion kilowatthours	April	2013	21.5	13.53
+*/
+  sql_cmd: SELECT Month, Year FROM energy_supply WHERE ISO = 'MISO' AND Year = 2012 AND Month IN ('April', 'May', 'June') GROUP BY Month, Year HAVING SUM(Generation) > SUM(Demand);
+  sql_result: ""
+  answer: In q2 of 2012, the Mid Altantic region had energy surplus in the months of April, May, and June.
